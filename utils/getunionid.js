@@ -73,7 +73,6 @@ function checkbind(openid) {
   // 发送请求
   wx.request({
     //项目的真正接口，通过字符串拼接方式实现
-    //url: "http://xbapp.ly12333.com:7060/UIAP2/ws/weChatAppletWs",
     url: app.globalData.host + "ws/weChatAppletWs",
     header: {
       'content-type': 'application/x-www-form-urlencoded'

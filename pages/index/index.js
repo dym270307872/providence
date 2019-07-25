@@ -1,10 +1,9 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+var Access = require('../../utils/access.js');
 Page({
   data: {
-    motto: '',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -16,6 +15,9 @@ Page({
     })
   },
   onLoad: function () {
+
+    
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -51,46 +53,9 @@ Page({
       hasUserInfo: true
     })
   },
-  sayHello: function (e) {
-    console.log(e)
-    var ret = this;
-    var getdate = {};
-    // getdate['name']=this.data.userInfo.nickName;
-    // console.log(getdate);
-
-
-    wx.request({
-      //项目的真正接口，通过字符串拼接方式实现
-      url: 'https://outman.eicp.vip/demo/main?name=' + ret.data.userInfo.nickName,
-      header: {
-        // "content-type": "application/json;charset=UTF-8"
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      // data: JSON.stringify(strMapToObj(getdata)),
-      method: 'GET',
-      success: function (res) {
-        //参数值为res.data,直接将返回的数据传入
-        //doSuccess(res.data);
-        console.log(res);
-        
-        ret.setData({
-          motto: res.data
-        });
-      },
-      fail: function () {
-        //doFail();
-      },
-    })
-
-    // wx.sayHello({
-    //   success: res => {
-    //     // app.globalData.userInfo = res.userInfo
-    //     this.setData({
-    //       // userInfo: res.userInfo,
-    //       // hasUserInfo: true
-    //       motto: res.data
-    //     })
-    //   }
-    // });
+  getTest:function(e){
+    const accountInfo = wx.getAccountInfoSync();
+    console.log(accountInfo.miniProgram.appId);
+    Access.access();
   }
 })

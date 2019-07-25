@@ -5,11 +5,11 @@
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      <button  bindtap="sayHello" > 请求后台 </button>
     </block>
   </view>
-  
   <view class="usermotto">
+  <button bindtap='getTest'>测试api</button>
     <text class="user-motto">{{motto}}</text>
   </view>
+  
 </view>

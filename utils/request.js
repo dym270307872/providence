@@ -8,7 +8,7 @@
 var app = getApp();
 //项目URL相同部分，减轻代码量，同时方便项目迁移
 //这里因为是本地调试，所以host不规范，实际上应该是你备案的域名信息
-var host = '';
+var host = 'https://outman.eicp.vip';
 
 /**
  * POST请求，
@@ -29,11 +29,11 @@ function doPost(url, postData, doSuccess, doFail) {
     method: 'POST',
     success: function (res) {
       //参数值为res.data,直接将返回的数据传入
-      //doSuccess(res.data);
-      console.log(res);
+      doSuccess(res.data);
+      // console.log(res);
     },
-    fail: function () {
-      //doFail();
+    fail: function (e) {
+      doFail(e);
     },
   })
 }
@@ -49,8 +49,8 @@ function doGet(url, doSuccess, doFail) {
     success: function (res) {
       doSuccess(res.data);
     },
-    fail: function () {
-      doFail();
+    fail: function (e) {
+      doFail(e);
     },
   })
 }
